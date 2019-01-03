@@ -1,6 +1,7 @@
 'use strict';
 
 const io = require('socket.io')(3000);
+const alterFile = require('./lib/alterFile');
 
 /**
  * establishes a socket connection and listens for 'newFile', 'save', and 'err'
@@ -12,7 +13,7 @@ io.on('connection', (socket) => {
   
   socket.on('newFile', (file) => {
     console.log({file});
-    socket.broadcast.emit('read', file);
+    alterFile(file, socket);
   });
 
   socket.on('saved', (data) => {
