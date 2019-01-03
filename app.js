@@ -1,17 +1,32 @@
 'use strict';
 
-const fs = require('fs');
+const io = require('socket.io')(3000);
 
-const alterFile = (file) => {
-  fs.readFile( file, (err, data) => {
-    if(err) { throw err; }
-    let text = data.toString().toUpperCase();
-    fs.writeFile( file, Buffer.from(text), (err, data) => {
-      if(err) { throw err; }
-      console.log(`${file} saved`);
-    });
+/**
+ * establishes a socket connection and listens for 'newFile', 'save', and 'err'
+ * @param {socket} socket - the socket connection
+ */
+io.on('connection', (socket) => {
+  console.log('New Connection', socket.id);
+  
+  
+  socket.on('newFile', (file) => {
+    console.log({file});
+    socket.broadcast.emit('read', file);
   });
-};
 
-let file = process.argv.slice(2).shift();
-alterFile(file);
+  socket.on('saved', (data) => {
+    console.log('in the saved file emitter function', 'data is ', data);
+    socket.broadcast.emit('file-saved', data);
+  });
+
+  // 'error' is reserved for actual socket errors
+  socket.on('err', (err) => { 
+    console.error('err', err);
+    socket.broadcast.emit('bad-error', err);
+  });
+});
+
+module.exports = io;
+
+
