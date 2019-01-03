@@ -1,42 +1,38 @@
 ![CF](http://i.imgur.com/7v5ASc8.png) LAB
 =================================================
 
-## Project Name
+## Socket.IO lab
 
-### Author: Student/Group Name
+### Author: Lena Eivy
 
 ### Links and Resources
-* [repo](http://xyz.com)
-* [travis](http://xyz.com)
-* [back-end](http://xyz.com)
-* [front-end](http://xyz.com)
+* [repo](https://github.com/applena/08-socket.io)
+* [travis](https://travis-ci.com/applena/08-socket.io.svg?branch=master)
 
 ### Modules
-#### `modulename.js`
+#### `alterFile.js`
 ##### Exported Values and Methods
 
-###### `foo(thing) -> string`
-Usage Notes or examples
+###### `alterFile(file-path) -> string`
+exports a function that takes in a file path, turns that file to upper case and rewrites that file to the same location
 
-###### `bar(array) -> array`
-Usage Notes or examples
+#### `toUpperCase.js`
+##### Exported Values and Methods
+
+###### `toUpperCase(buffer) -> string`
+returns a string of uppercase values
 
 ### Setup
 #### `.env` requirements
-* `PORT` - Port Number
-* `MONGODB_URI` - URL to the running mongo instance/db
+* `PORT` - Port Number 3000
+* `npm i`
 
 #### Running the app
-* `npm start`
-* Endpoint: `/foo/bar/`
-  * Returns a JSON object with abc in it.
-* Endpoint: `/bing/zing/`
-  * Returns a JSON object with xyz in it.
+* connect to localhost:3000 via socket.io
 
 #### Tests
 * How do you run tests?
+`npm run test`
 * What assertions were made?
-* What assertions need to be / should be made?
+Assrting that a file is read, rewritten in uppercase and saved in the same location
 
-#### UML
-Link to an image of the UML for your application and response to events
