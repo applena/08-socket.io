@@ -2,7 +2,6 @@
 
 jest.mock('fs');
 const alterFile = require('../lib/alterFile');
-// const io = require('../app.js');
 
 const consoleSpy = jest.spyOn(console, 'log');
 const socket = {emit: () => {console.log('socket emitter ', this.arguments);}};
