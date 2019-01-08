@@ -29,6 +29,9 @@ returns a string of uppercase values
 
 #### Running the app
 * connect to localhost:3000 via socket.io
+* run app.js in your CLI - `node app.js`
+* next run logger.js in a different terminal - `node logger.js`
+* finally run speaker.js in a different terminal - `node speaker.js filepath`
 
 #### Tests
 * How do you run tests?
